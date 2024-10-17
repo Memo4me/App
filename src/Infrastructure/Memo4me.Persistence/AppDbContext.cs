@@ -13,7 +13,8 @@ public class AppDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<User>().
+            HasKey(x => x.Id);
         
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Username)
@@ -22,5 +23,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
+        
+        base.OnModelCreating(modelBuilder);
     }
 }

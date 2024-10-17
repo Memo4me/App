@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo4me.UI", "src\Presentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo4me.Persistence", "src\Infrastructure\Memo4me.Persistence\Memo4me.Persistence.csproj", "{165ACD63-266D-4D2B-9FD0-26CCFBCABA4F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "devops", "devops", "{F48DBB91-36CB-4FE5-B1F1-F43310671B0D}"
+	ProjectSection(SolutionItems) = preProject
+		devops\Dockerfile = devops\Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
