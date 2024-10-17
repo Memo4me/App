@@ -12,7 +12,6 @@ COPY src/Core/Memo4me.Application/*.csproj ./src/Core/Memo4me.Application/
 COPY src/Core/Memo4me.Domain/*.csproj ./src/Core/Memo4me.Domain/
 COPY src/Infrastructure/Memo4me.Persistence/*.csproj ./src/Infrastructure/Memo4me.Persistence/
 COPY src/Presentation/Memo4me.API/*.csproj ./src/Presentation/Memo4me.API/
-#COPY src/Presentation/Memo4me.UI/*.csproj ./src/Presentation/Memo4me.UI/
 RUN dotnet restore src/Presentation/Memo4me.API/Memo4me.API.csproj
 
 # Copy all the files and build the application

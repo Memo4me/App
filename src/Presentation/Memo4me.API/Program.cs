@@ -5,12 +5,13 @@ using Memo4me.Persistence;
 using Memo4me.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddPersistence(configuration.GetConnectionString("PostgresConnection"));
         
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
