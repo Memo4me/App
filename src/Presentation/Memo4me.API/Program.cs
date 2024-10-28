@@ -1,32 +1,37 @@
 using Memo4me.Application.Interfaces.Repositories;
-using Memo4me.Application.Interfaces.Services;
-using Memo4me.Application.Services;
-using Memo4me.Persistence;
+using Memo4me.Persistence.Extensions;
 using Memo4me.Persistence.Repositories;
 
-var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddPersistence(configuration.GetConnectionString("PostgresConnection"));
-        
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-
-var app = builder.Build();
-        
-if (app.Environment.IsDevelopment())
+var builder = WebApplication.CreateBuilder(args); 
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var configuration = builder.Configuration;
+    
+    builder.Services.AddHttpClient();
+    
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    builder.Services.AddPersistence(configuration.GetConnectionString("PostgresConnection"));
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+var app = builder.Build(); 
+{
+    
+    if (app.Environment.IsDevelopment())
+    {
         
-app.MapControllers();
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-app.Run();
+    app.UseHttpsRedirection();
+
+    app.UseAuthorization();
+        
+    app.MapControllers();
+
+    app.Run();
+}
+        

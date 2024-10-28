@@ -1,0 +1,23 @@
+﻿@page "/contacts"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<PageTitle>Contacts</PageTitle>
+
+<h3>Contacts</h3>
+
+<button @onclick="Redirect">Home</button>
+
+<p>Here you can add your contact information.</p>
+<ul>
+    <li>Email: example@example.com</li>
+    <li>Phone: +1234567890</li>
+</ul>
+
+@code {
+
+    private void Redirect()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

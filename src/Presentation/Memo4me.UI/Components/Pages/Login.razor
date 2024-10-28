@@ -1,0 +1,19 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authentication
+@rendermode InteractiveServer
+@inject NavigationManager UriHelper
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h3>Login</h3>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var redirectUri = UriHelper.ToAbsoluteUri("/").ToString();
+        var httpContext = HttpContextAccessor.HttpContext;
+        await httpContext.ChallengeAsync("oidc", new AuthenticationProperties
+        {
+            RedirectUri = redirectUri
+        });
+    }
+}
