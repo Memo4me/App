@@ -4,16 +4,29 @@
 
 ### Building and Running the Docker Containers
 
-1. Ensure you are in the root directory of the repository.
+1. Navigate to the Infra Repository
+   Since docker-compose.yml is located in the Infra repository, make sure you navigate there first:
 
-2. Build the Docker image:
-   
     ```bash
-    docker build -t memo4me-image -f devops/Dockerfile .
+    cd ../Infra
     ```
 
-3. Run the Docker container:
+2. Build and start the Docker containers using docker-compose:
+   
+    ```bash
+    docker-compose up -d --build
+    ```
+
+3. To stop the containers, use:
 
     ```bash
-    docker run -d -p 8080:8080 -e ASPNETCORE_ENVIRONMENT=Development memo4me-image
+    docker-compose down
+    ```
+
+### Rebuilding and Restarting Containers
+
+To rebuild the images and restart the containers after making changes, run:
+
+    ```bash
+    docker-compose up -d --build
     ```
