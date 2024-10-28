@@ -22,11 +22,3 @@
     ```bash
     docker-compose down
     ```
-
-### Rebuilding and Restarting Containers
-
-To rebuild the images and restart the containers after making changes, run:
-
-    ```bash
-    docker-compose up -d --build
-    ```
