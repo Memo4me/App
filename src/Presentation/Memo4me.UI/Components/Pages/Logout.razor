@@ -4,6 +4,7 @@
 
 @inject NavigationManager UriHelper
 @inject IHttpContextAccessor HttpContextAccessor
+@inject IConfiguration Configuration
 
 <h3>Logout</h3>
 
@@ -14,8 +15,8 @@
         var idToken = await httpContext.GetTokenAsync("id_token");
         await httpContext.SignOutAsync();
         
-        var keycloakLogoutUrl = $"http://host.docker.internal:7270/realms/MemoRealm/protocol/openid-connect/logout" +
-                                $"?id_token_hint={idToken}" +
+        var keycloakBaseUrl = Configuration["Keycloak:LogoutUrl"];
+        var keycloakLogoutUrl = $"{keycloakBaseUrl}?id_token_hint={idToken}" +
                                 $"&post_logout_redirect_uri={UriHelper.BaseUri}";
         
         UriHelper.NavigateTo(keycloakLogoutUrl, forceLoad: true);

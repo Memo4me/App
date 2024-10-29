@@ -20,8 +20,8 @@ public static class AddAuthOpenIdExtension
                 options.ClientId = configuration["Authentication:OpenIdConnect:ClientId"];
                 options.ClientSecret = configuration["Authentication:OpenIdConnect:ClientSecret"];
                 options.ResponseType = configuration["Authentication:OpenIdConnect:ResponseType"];
+                options.RequireHttpsMetadata = configuration.GetValue<bool>("Authentication:OpenIdConnect:RequireHttpsMetadata");
                 options.SaveTokens = true;
-                options.RequireHttpsMetadata = false;
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
